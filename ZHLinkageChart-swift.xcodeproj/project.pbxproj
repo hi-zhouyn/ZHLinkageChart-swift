@@ -14,6 +14,7 @@
 		50084E0023B343030006DDC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50084DFE23B343030006DDC4 /* LaunchScreen.storyboard */; };
 		50084E0B23B343030006DDC4 /* ZHLinkageChart_swiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50084E0A23B343030006DDC4 /* ZHLinkageChart_swiftTests.swift */; };
 		50084E1623B343030006DDC4 /* ZHLinkageChart_swiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50084E1523B343030006DDC4 /* ZHLinkageChart_swiftUITests.swift */; };
+		DDBDDD5267E1AEB608D0C266 /* Pods_ZHLinkageChart_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6AE215C1F7CA8154FDEA22D /* Pods_ZHLinkageChart_swift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,9 @@
 		50084E1123B343030006DDC4 /* ZHLinkageChart-swiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ZHLinkageChart-swiftUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50084E1523B343030006DDC4 /* ZHLinkageChart_swiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHLinkageChart_swiftUITests.swift; sourceTree = "<group>"; };
 		50084E1723B343030006DDC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66E8B9ED3E904D922DF8939F /* Pods-ZHLinkageChart-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHLinkageChart-swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZHLinkageChart-swift/Pods-ZHLinkageChart-swift.release.xcconfig"; sourceTree = "<group>"; };
+		AD0E142BBE3C771BA05DF59E /* Pods-ZHLinkageChart-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHLinkageChart-swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZHLinkageChart-swift/Pods-ZHLinkageChart-swift.debug.xcconfig"; sourceTree = "<group>"; };
+		E6AE215C1F7CA8154FDEA22D /* Pods_ZHLinkageChart_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZHLinkageChart_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDBDDD5267E1AEB608D0C266 /* Pods_ZHLinkageChart_swift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +86,8 @@
 				50084E0923B343030006DDC4 /* ZHLinkageChart-swiftTests */,
 				50084E1423B343030006DDC4 /* ZHLinkageChart-swiftUITests */,
 				50084DF323B343010006DDC4 /* Products */,
+				FC83775B5BCFDE7D508501E8 /* Pods */,
+				CFDBB24241529A61407FA034 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +132,23 @@
 			path = "ZHLinkageChart-swiftUITests";
 			sourceTree = "<group>";
 		};
+		CFDBB24241529A61407FA034 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E6AE215C1F7CA8154FDEA22D /* Pods_ZHLinkageChart_swift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FC83775B5BCFDE7D508501E8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AD0E142BBE3C771BA05DF59E /* Pods-ZHLinkageChart-swift.debug.xcconfig */,
+				66E8B9ED3E904D922DF8939F /* Pods-ZHLinkageChart-swift.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +156,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 50084E1A23B343030006DDC4 /* Build configuration list for PBXNativeTarget "ZHLinkageChart-swift" */;
 			buildPhases = (
+				518D485AEDB73B542C759E0F /* [CP] Check Pods Manifest.lock */,
 				50084DEE23B343010006DDC4 /* Sources */,
 				50084DEF23B343010006DDC4 /* Frameworks */,
 				50084DF023B343010006DDC4 /* Resources */,
+				30A0BD0BF4499ABBD0068F44 /* [CP] Embed Pods Frameworks */,
+				9B34841C6AC740BBE30CCB89 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -250,6 +277,64 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		30A0BD0BF4499ABBD0068F44 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ZHLinkageChart-swift/Pods-ZHLinkageChart-swift-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/LinqToObjectiveC/LinqToObjectiveC.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LinqToObjectiveC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZHLinkageChart-swift/Pods-ZHLinkageChart-swift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		518D485AEDB73B542C759E0F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ZHLinkageChart-swift-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9B34841C6AC740BBE30CCB89 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZHLinkageChart-swift/Pods-ZHLinkageChart-swift-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		50084DEE23B343010006DDC4 /* Sources */ = {
@@ -430,16 +515,14 @@
 		};
 		50084E1B23B343030006DDC4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD0E142BBE3C771BA05DF59E /* Pods-ZHLinkageChart-swift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8H6HKVCBR9;
 				INFOPLIST_FILE = "ZHLinkageChart-swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zhou.ZHLinkageChart-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -449,16 +532,14 @@
 		};
 		50084E1C23B343030006DDC4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 66E8B9ED3E904D922DF8939F /* Pods-ZHLinkageChart-swift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8H6HKVCBR9;
 				INFOPLIST_FILE = "ZHLinkageChart-swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zhou.ZHLinkageChart-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -474,11 +555,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8H6HKVCBR9;
 				INFOPLIST_FILE = "ZHLinkageChart-swiftTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zhou.ZHLinkageChart-swiftTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -495,11 +572,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8H6HKVCBR9;
 				INFOPLIST_FILE = "ZHLinkageChart-swiftTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zhou.ZHLinkageChart-swiftTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -515,11 +588,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8H6HKVCBR9;
 				INFOPLIST_FILE = "ZHLinkageChart-swiftUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zhou.ZHLinkageChart-swiftUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -535,11 +604,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8H6HKVCBR9;
 				INFOPLIST_FILE = "ZHLinkageChart-swiftUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zhou.ZHLinkageChart-swiftUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
