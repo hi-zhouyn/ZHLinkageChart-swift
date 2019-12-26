@@ -14,6 +14,12 @@
 		50084E0023B343030006DDC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50084DFE23B343030006DDC4 /* LaunchScreen.storyboard */; };
 		50084E0B23B343030006DDC4 /* ZHLinkageChart_swiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50084E0A23B343030006DDC4 /* ZHLinkageChart_swiftTests.swift */; };
 		50084E1623B343030006DDC4 /* ZHLinkageChart_swiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50084E1523B343030006DDC4 /* ZHLinkageChart_swiftUITests.swift */; };
+		50084E2523B447F40006DDC4 /* TopSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50084E2423B447F40006DDC4 /* TopSelectView.swift */; };
+		50084E2723B4588A0006DDC4 /* ZHLinkageChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50084E2623B4588A0006DDC4 /* ZHLinkageChartView.swift */; };
+		50084E2923B458A20006DDC4 /* ZHBgCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50084E2823B458A20006DDC4 /* ZHBgCollectionViewCell.swift */; };
+		50084E2B23B458B20006DDC4 /* ZHItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50084E2A23B458B20006DDC4 /* ZHItemCollectionViewCell.swift */; };
+		50084E2D23B458C00006DDC4 /* ZHTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50084E2C23B458C00006DDC4 /* ZHTitleCollectionViewCell.swift */; };
+		50084E2F23B458CE0006DDC4 /* ZHItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50084E2E23B458CE0006DDC4 /* ZHItemModel.swift */; };
 		DDBDDD5267E1AEB608D0C266 /* Pods_ZHLinkageChart_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6AE215C1F7CA8154FDEA22D /* Pods_ZHLinkageChart_swift.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +54,12 @@
 		50084E1123B343030006DDC4 /* ZHLinkageChart-swiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ZHLinkageChart-swiftUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50084E1523B343030006DDC4 /* ZHLinkageChart_swiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHLinkageChart_swiftUITests.swift; sourceTree = "<group>"; };
 		50084E1723B343030006DDC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50084E2423B447F40006DDC4 /* TopSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSelectView.swift; sourceTree = "<group>"; };
+		50084E2623B4588A0006DDC4 /* ZHLinkageChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHLinkageChartView.swift; sourceTree = "<group>"; };
+		50084E2823B458A20006DDC4 /* ZHBgCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHBgCollectionViewCell.swift; sourceTree = "<group>"; };
+		50084E2A23B458B20006DDC4 /* ZHItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		50084E2C23B458C00006DDC4 /* ZHTitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHTitleCollectionViewCell.swift; sourceTree = "<group>"; };
+		50084E2E23B458CE0006DDC4 /* ZHItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHItemModel.swift; sourceTree = "<group>"; };
 		66E8B9ED3E904D922DF8939F /* Pods-ZHLinkageChart-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHLinkageChart-swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZHLinkageChart-swift/Pods-ZHLinkageChart-swift.release.xcconfig"; sourceTree = "<group>"; };
 		AD0E142BBE3C771BA05DF59E /* Pods-ZHLinkageChart-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHLinkageChart-swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZHLinkageChart-swift/Pods-ZHLinkageChart-swift.debug.xcconfig"; sourceTree = "<group>"; };
 		E6AE215C1F7CA8154FDEA22D /* Pods_ZHLinkageChart_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZHLinkageChart_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,8 +116,10 @@
 		50084DF423B343010006DDC4 /* ZHLinkageChart-swift */ = {
 			isa = PBXGroup;
 			children = (
+				50084E2323B447DF0006DDC4 /* ZHLinkageChart */,
 				50084DF523B343010006DDC4 /* AppDelegate.swift */,
 				50084DF723B343010006DDC4 /* ViewController.swift */,
+				50084E2423B447F40006DDC4 /* TopSelectView.swift */,
 				50084DF923B343010006DDC4 /* Main.storyboard */,
 				50084DFC23B343030006DDC4 /* Assets.xcassets */,
 				50084DFE23B343030006DDC4 /* LaunchScreen.storyboard */,
@@ -130,6 +144,18 @@
 				50084E1723B343030006DDC4 /* Info.plist */,
 			);
 			path = "ZHLinkageChart-swiftUITests";
+			sourceTree = "<group>";
+		};
+		50084E2323B447DF0006DDC4 /* ZHLinkageChart */ = {
+			isa = PBXGroup;
+			children = (
+				50084E2623B4588A0006DDC4 /* ZHLinkageChartView.swift */,
+				50084E2823B458A20006DDC4 /* ZHBgCollectionViewCell.swift */,
+				50084E2A23B458B20006DDC4 /* ZHItemCollectionViewCell.swift */,
+				50084E2C23B458C00006DDC4 /* ZHTitleCollectionViewCell.swift */,
+				50084E2E23B458CE0006DDC4 /* ZHItemModel.swift */,
+			);
+			path = ZHLinkageChart;
 			sourceTree = "<group>";
 		};
 		CFDBB24241529A61407FA034 /* Frameworks */ = {
@@ -286,15 +312,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ZHLinkageChart-swift/Pods-ZHLinkageChart-swift-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/LinqToObjectiveC/LinqToObjectiveC.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LinqToObjectiveC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -341,8 +367,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50084E2D23B458C00006DDC4 /* ZHTitleCollectionViewCell.swift in Sources */,
+				50084E2523B447F40006DDC4 /* TopSelectView.swift in Sources */,
+				50084E2723B4588A0006DDC4 /* ZHLinkageChartView.swift in Sources */,
 				50084DF823B343010006DDC4 /* ViewController.swift in Sources */,
+				50084E2B23B458B20006DDC4 /* ZHItemCollectionViewCell.swift in Sources */,
 				50084DF623B343010006DDC4 /* AppDelegate.swift in Sources */,
+				50084E2F23B458CE0006DDC4 /* ZHItemModel.swift in Sources */,
+				50084E2923B458A20006DDC4 /* ZHBgCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

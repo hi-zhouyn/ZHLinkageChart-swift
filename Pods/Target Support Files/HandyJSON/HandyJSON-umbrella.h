@@ -10,7 +10,8 @@
 #endif
 #endif
 
+#import "HandyJSON.h"
 
-FOUNDATION_EXPORT double SwiftyJSONVersionNumber;
-FOUNDATION_EXPORT const unsigned char SwiftyJSONVersionString[];
+FOUNDATION_EXPORT double HandyJSONVersionNumber;
+FOUNDATION_EXPORT const unsigned char HandyJSONVersionString[];
 
