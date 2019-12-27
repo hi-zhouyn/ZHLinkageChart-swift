@@ -13,6 +13,7 @@ let KITEMWIDTH: CGFloat = 55 //表格宽度
 let KSPACE: CGFloat = 10 //表格间距
 let KLINESPACE: CGFloat = 15 //表格边距
 let KHEADHEIGHT: CGFloat = 25 //表格顶部head高度
+let KSCREEN_WIDTH = (UIScreen.main.bounds.width)
 
 
 class ZHItemCollectionViewCell: UICollectionViewCell {
