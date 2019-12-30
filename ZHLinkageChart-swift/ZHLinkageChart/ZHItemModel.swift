@@ -10,17 +10,18 @@ import UIKit
 import HandyJSON
 
 class ZHItemModel: NSObject,HandyJSON {
-    var layersCount: NSInteger?//总楼层
-    var topLayers: NSInteger?//最高楼层
-    var houseName: NSString?//房屋名称（部位）：3-308
-    var houseId: NSString?//房屋编号
-    var physicLayers: NSString?//物理层
-    var lowerNominalLayer: NSString?//底部逻辑层
-    var highNominalLayer: NSString?//高位逻辑层
-    var onNominalLayer: NSString?//所在逻辑层
-    var unitNum: NSString?//单元
-    var unitName: NSString?//单元名称
-    var uIndex: NSString?//单元内序号
+    var layersCount: Int?//总楼层
+    var topLayers: Int?//最高楼层
+    var houseName: String?//房屋名称（部位）：3-308
+    var layoutName: String?//用途名称
+    var houseId: String?//房屋编号
+    var physicLayers: String?//物理层
+    var lowerNominalLayer: Int = 0//底部逻辑层
+    var highNominalLayer: Int = 0//高位逻辑层
+    var onNominalLayer: String?//所在逻辑层
+    var unitNum: String?//单元
+    var unitName: String?//单元名称
+    var uIndex: String?//单元内序号
     
     required override init() {
         

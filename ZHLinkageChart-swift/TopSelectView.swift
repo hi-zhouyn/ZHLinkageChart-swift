@@ -9,13 +9,13 @@
 import UIKit
 
 protocol TopSelectViewDelegate : NSObjectProtocol {
-    func selectAction(indexPath: NSIndexPath) -> Void
+    func selectAction(indexPath: IndexPath) -> Void
 }
 
 class TopSelectView: UIView,UICollectionViewDelegate,UICollectionViewDataSource {
 
     weak var zh_delegate : TopSelectViewDelegate?
-    var allKeysArr = NSArray()
+    var allKeysArr = Array<Any>()
     
     lazy var headCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -58,8 +58,8 @@ class TopSelectView: UIView,UICollectionViewDelegate,UICollectionViewDataSource 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if self.zh_delegate != nil && (self.zh_delegate?.responds(to: Selector.init(("selectAction:"))))! {
-            self.zh_delegate?.selectAction(indexPath: indexPath as NSIndexPath)
+        if self.zh_delegate != nil && (self.zh_delegate?.responds(to: Selector.init(("selectAction:"))) != false) {
+            self.zh_delegate?.selectAction(indexPath: indexPath)
         }
     }
     

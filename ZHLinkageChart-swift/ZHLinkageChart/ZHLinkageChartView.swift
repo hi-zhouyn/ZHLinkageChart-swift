@@ -17,19 +17,19 @@ enum ZHLinkageChartViewSelectType : Int {
 protocol ZHLinkageChartViewDelegate: NSObjectProtocol {
     func linkageChartViewDidSelect(chartView: ZHLinkageChartView,
                                    type: ZHLinkageChartViewSelectType,
-                                   indexPath: NSIndexPath,
-                                   index: NSInteger) -> Void
+                                   indexPath: IndexPath,
+                                   index: Int) -> Void
 }
 
 class ZHLinkageChartView: UIView,
     UICollectionViewDelegate,
     UICollectionViewDataSource,
-UICollectionViewDelegateFlowLayout,
-UIScrollViewDelegate{
+    UICollectionViewDelegateFlowLayout,
+UIScrollViewDelegate {
     
     weak var zh_delegate : ZHLinkageChartViewDelegate?
-    var dataArr : NSArray?
-    var allKeysArr : NSArray?
+    var dataArr : Array<Any>?
+    var allKeysArr : Array<Any>?
     var itemModel : ZHItemModel?
     
     var refreshCount = 0
@@ -121,16 +121,49 @@ UIScrollViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.bgCollectionView {
-            return (self.dataArr![section] as AnyObject).count
+            return (((self.dataArr?[section])) as AnyObject).count
         }
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        return nil
+        if collectionView == self.headCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NSStringFromClass(ZHTitleCollectionViewCell.self), for: indexPath) as!ZHTitleCollectionViewCell
+            
+            return cell
+        } else if collectionView == self.bgCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NSStringFromClass(ZHBgCollectionViewCell.self), for: indexPath)
+            
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NSStringFromClass(ZHItemCollectionViewCell.self), for: indexPath)
+            
+            return cell
+        }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == self.headCollectionView {
+            self.linkageChartViewDidSelectType(type: ZHLinkageChartViewSelectType.ZHLinkageChartViewSelectTypeTop,
+                                               indexPath: indexPath,
+                                               index: indexPath.section)
+        } else {
+            self.linkageChartViewDidSelectType(type: ZHLinkageChartViewSelectType.ZHLinkageChartViewSelectTypeLeft,
+                                               indexPath: indexPath,
+                                               index: indexPath.section)
+        }
+    }
+    
+    func linkageChartViewDidSelectType(type: ZHLinkageChartViewSelectType,indexPath: IndexPath,index: Int) -> Void {
+        if self.zh_delegate != nil
+            && (self.zh_delegate?.responds(to: Selector.init(("linkageChartViewDidSelect:"))) != false)
+        {
+            self.zh_delegate?.linkageChartViewDidSelect(chartView: self,
+                                                        type: type,
+                                                        indexPath: indexPath,
+                                                        index: index)
+        }
+    }
     
     /*
     // Only override draw() if you perform custom drawing.
