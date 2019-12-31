@@ -21,15 +21,17 @@ protocol ZHLinkageChartViewDelegate: NSObjectProtocol {
                                    index: Int) -> Void
 }
 
-class ZHLinkageChartView: UIView,
-    UICollectionViewDelegate,
-    UICollectionViewDataSource,
-    UICollectionViewDelegateFlowLayout,
-UIScrollViewDelegate {
+class ZHLinkageChartView: UIView {
     
     weak var zh_delegate : ZHLinkageChartViewDelegate?
-    var dataArr : Array<Any>?
-    var allKeysArr : Array<Any>?
+    var dataArr = [[Any]]() {
+        didSet {
+            let allWidth = KSCREEN_WIDTH - KITEMWIDTH - KSPACE - KLINESPACE * 2
+            let itemWith = (KITEMWIDTH * CGFloat(dataArr.count)) + KSPACE
+            refreshCount = Int(ceilf(Float(allWidth / itemWith)));
+        }
+    }
+    var allKeysArr = [Any]()
     var itemModel : ZHItemModel?
     
     var refreshCount = 0
@@ -111,33 +113,106 @@ UIScrollViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
+    @objc func speedSelectIndexPath(indexpath: IndexPath) -> Void {
+        //此处用section进行下标判断选择
+        self.headCollectionView.selectItem(at: IndexPath.init(row: 0, section: indexpath.section), animated: true, scrollPosition: UICollectionView.ScrollPosition.left)
     }
     
+    /*
+     // Only override draw() if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     override func draw(_ rect: CGRect) {
+     // Drawing code
+     }
+     */
+    
+}
+
+extension ZHLinkageChartView: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate,ZHBgCollectionViewCellDelegate {
+    
+    /** 滑动回调,处理多向滑动 */
+    func itemCollectionViewDidScroll(scrollView: UIScrollView) {
+        self.scrollViewDidScroll(scrollView)
+    }
+    
+    /** item点击回调 */
+    func itemDidSelectIndexPath(indexPath: IndexPath, index: Int) {
+        self.linkageChartViewDidSelectType(type: ZHLinkageChartViewSelectType.ZHLinkageChartViewSelectTypeItem,
+                                           indexPath: indexPath,
+                                           index: index)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == self.headCollectionView {
+            self.bgCollectionView.contentOffset.x = self.headCollectionView.contentOffset.x
+        } else if scrollView == self.bgCollectionView {
+            self.headCollectionView.contentOffset.x = self.bgCollectionView.contentOffset.x
+        }
+        
+        if scrollView == self.headCollectionView || scrollView == self.bgCollectionView || scrollView == self.leftCollectionView {
+            self.updateCollectionViewOffictYWithView(scrollView: self.leftCollectionView)
+        } else {
+            self.leftCollectionView.contentOffset.y = scrollView.contentOffset.y
+            self.updateCollectionViewOffictYWithView(scrollView: self.leftCollectionView)
+        }
+    }
+    
+    /** 循环取出赋值偏移量 */
+    func updateCollectionViewOffictYWithView(scrollView: UIScrollView) -> Void {
+        let indexPath = self.bgCollectionView.indexPathForItem(at: self.bgCollectionView.contentOffset)
+        var min = indexPath!.section - self.refreshCount
+        var max = indexPath!.section + self.refreshCount
+        max = max > self.dataArr.count ? self.dataArr.count : max
+        min = min > 0 ? min : 0
+        for i in min..<max {
+            for j in 0..<self.dataArr[i].count {
+                let cell = self.bgCollectionView.cellForItem(at: IndexPath.init(row: j, section: i)) as? ZHBgCollectionViewCell
+                if cell == nil {
+                    continue
+                }
+                if cell?.collectionView.contentOffset.y == scrollView.contentOffset.y {
+                    continue
+                }
+                cell?.collectionView.contentOffset = CGPoint.init(x: 0, y: scrollView.contentOffset.y)
+            }
+        }
+    }
+    
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return self.allKeysArr!.count
+        return self.allKeysArr.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.bgCollectionView {
-            return (((self.dataArr?[section])) as AnyObject).count
+            return (((self.dataArr[section])) as AnyObject).count
         }
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.headCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NSStringFromClass(ZHTitleCollectionViewCell.self), for: indexPath) as!ZHTitleCollectionViewCell
-            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NSStringFromClass(ZHTitleCollectionViewCell.self), for: indexPath) as! ZHTitleCollectionViewCell
+            cell.showBorder = true
+            cell.titleLabel.text =  "\(self.allKeysArr[indexPath.section])单元"
             return cell
         } else if collectionView == self.bgCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NSStringFromClass(ZHBgCollectionViewCell.self), for: indexPath)
-            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NSStringFromClass(ZHBgCollectionViewCell.self), for: indexPath) as! ZHBgCollectionViewCell
+            cell.tag = indexPath.row
+            cell.indexPath = indexPath
+            cell.itemArr = [self.dataArr[indexPath.section][indexPath.row]]
+            cell.zh_itemDelegate = self
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NSStringFromClass(ZHItemCollectionViewCell.self), for: indexPath)
-            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NSStringFromClass(ZHItemCollectionViewCell.self), for: indexPath) as! ZHItemCollectionViewCell
+            var layer = self.itemModel?.topLayers ?? 0 - indexPath.section
+            //考虑地下层的情况
+            if layer <= 0 && self.itemModel?.topLayers ?? 0 > 0 {
+                layer -= 1
+            }
+            let title = "\(layer)楼"
+            let info = "物理层\(self.itemModel?.layersCount ?? 0 - indexPath.section)"
+            cell.updateDataWithTitle(title: title, info: info, tag: 0)
             return cell
         }
     }
@@ -165,12 +240,16 @@ UIScrollViewDelegate {
         }
     }
     
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == self.headCollectionView {
+            return CGSize(width: CGFloat(Int((KITEMWIDTH * 10)) * self.dataArr[indexPath.section].count - 10),
+                          height: collectionView.frame.height)
+        } else if collectionView == self.bgCollectionView {
+            return CGSize(width: KITEMWIDTH, height: collectionView.frame.height)
+        } else if collectionView == self.leftCollectionView {
+            return CGSize(width: KITEMWIDTH, height: KITEMHEIGHT)
+        }
+        return CGSize.zero
     }
-    */
-
 }
+

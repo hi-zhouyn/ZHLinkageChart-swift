@@ -21,11 +21,7 @@ class ZHTitleCollectionViewCell: UICollectionViewCell {
             }
         }
     }
-    var nameStr : String = "" {
-        didSet {
-            titleLabel.text = nameStr
-        }
-    }
+    
     lazy var titleLabel: UILabel = {
         let titleLabel = UILabel.init(frame: self.bounds)
         titleLabel.textColor = UIColor.darkText

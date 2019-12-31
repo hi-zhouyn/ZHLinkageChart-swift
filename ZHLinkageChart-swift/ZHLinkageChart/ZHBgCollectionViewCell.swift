@@ -18,9 +18,9 @@ protocol ZHBgCollectionViewCellDelegate : NSObjectProtocol {
 /** 闭包 */
 typealias ItemSelectBlock = (_ indexPath: IndexPath,_ index: Int) -> Void
 
-class ZHBgCollectionViewCell: UICollectionViewCell,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate {
+class ZHBgCollectionViewCell: UICollectionViewCell {
     
-    var itemArr = Array<Any>(){
+    var itemArr = [Any](){
         didSet {
             collectionView.reloadData()
         }
@@ -55,6 +55,11 @@ class ZHBgCollectionViewCell: UICollectionViewCell,UICollectionViewDelegate,UICo
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+}
+
+extension ZHBgCollectionViewCell : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate {
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if zh_itemDelegate != nil && (zh_itemDelegate?.responds(to: Selector.init(("itemCollectionViewDidScroll:"))) != false) {
             zh_itemDelegate?.itemCollectionViewDidScroll(scrollView: scrollView)
@@ -71,8 +76,6 @@ class ZHBgCollectionViewCell: UICollectionViewCell,UICollectionViewDelegate,UICo
             let infoModel = itemArr[indexPath.row] as! ZHItemModel
             cell.updateDataWithTitle(title: infoModel.houseName ?? "", info: infoModel.layoutName ?? "", tag: 1)
         }
-        
-        
         
         return cell
     }
@@ -95,4 +98,5 @@ class ZHBgCollectionViewCell: UICollectionViewCell,UICollectionViewDelegate,UICo
         }
         return CGSize(width: KITEMWIDTH, height: KITEMHEIGHT)
     }
+    
 }

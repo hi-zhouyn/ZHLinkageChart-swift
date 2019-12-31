@@ -8,6 +8,9 @@
 
 import UIKit
 
+let KTopSelectViewHeight = 50.0
+
+
 protocol TopSelectViewDelegate : NSObjectProtocol {
     func selectAction(indexPath: IndexPath) -> Void
 }
