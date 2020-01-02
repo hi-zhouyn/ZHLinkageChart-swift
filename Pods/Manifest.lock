@@ -1,18 +1,18 @@
 PODS:
   - HandyJSON (5.0.0)
   - LinqToObjectiveC (2.1.0)
-  - SnapKit (5.0.1)
+  - SnapKit (4.2.0)
 
 DEPENDENCIES:
   - HandyJSON
   - LinqToObjectiveC
-  - SnapKit (~> 5.0.0)
+  - SnapKit (= 4.2)
 
 SPEC CHECKSUMS:
   HandyJSON: 992f2d661716d6a91de82d0056927bc7813b5770
   LinqToObjectiveC: f0e40c137a458b6b9725c4c7b6a575c0c72e3aec
-  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
-PODFILE CHECKSUM: a437591e8917ced55ad656bd72f692cd25d829c0
+PODFILE CHECKSUM: 336e3c74ed6b6bb4e302c71cfe2bac094a4db666
 
 COCOAPODS: 1.4.0

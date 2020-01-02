@@ -60,6 +60,7 @@
 		50084E2A23B458B20006DDC4 /* ZHItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		50084E2C23B458C00006DDC4 /* ZHTitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHTitleCollectionViewCell.swift; sourceTree = "<group>"; };
 		50084E2E23B458CE0006DDC4 /* ZHItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHItemModel.swift; sourceTree = "<group>"; };
+		50BE828623BDDC4C008DB268 /* ZHObjcBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHObjcBridge.h; sourceTree = "<group>"; };
 		66E8B9ED3E904D922DF8939F /* Pods-ZHLinkageChart-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHLinkageChart-swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZHLinkageChart-swift/Pods-ZHLinkageChart-swift.release.xcconfig"; sourceTree = "<group>"; };
 		AD0E142BBE3C771BA05DF59E /* Pods-ZHLinkageChart-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHLinkageChart-swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZHLinkageChart-swift/Pods-ZHLinkageChart-swift.debug.xcconfig"; sourceTree = "<group>"; };
 		E6AE215C1F7CA8154FDEA22D /* Pods_ZHLinkageChart_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZHLinkageChart_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +121,7 @@
 				50084DF523B343010006DDC4 /* AppDelegate.swift */,
 				50084DF723B343010006DDC4 /* ViewController.swift */,
 				50084E2423B447F40006DDC4 /* TopSelectView.swift */,
+				50BE828623BDDC4C008DB268 /* ZHObjcBridge.h */,
 				50084DF923B343010006DDC4 /* Main.storyboard */,
 				50084DFC23B343030006DDC4 /* Assets.xcassets */,
 				50084DFE23B343030006DDC4 /* LaunchScreen.storyboard */,
@@ -553,10 +555,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8H6HKVCBR9;
 				INFOPLIST_FILE = "ZHLinkageChart-swift/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zhou.ZHLinkageChart-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ZHLinkageChart-swift/ZHObjcBridge.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -570,10 +573,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8H6HKVCBR9;
 				INFOPLIST_FILE = "ZHLinkageChart-swift/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zhou.ZHLinkageChart-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ZHLinkageChart-swift/ZHObjcBridge.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

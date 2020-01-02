@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ViewController: UIViewController,TopSelectViewDelegate,ZHLinkageChartViewDelegate {
     
@@ -22,13 +23,24 @@ class ViewController: UIViewController,TopSelectViewDelegate,ZHLinkageChartViewD
         let chartView = ZHLinkageChartView.init(frame: CGRect(x: 0, y: self.topView.frame.maxY + 10, width: KSCREEN_WIDTH, height: self.view.frame.height - 60))
         chartView.zh_delegate = self
         self.view.addSubview(chartView)
+//        chartView.mas_makeConstraints { (make:MASConstraintMaker?) in
+//            make?.top.equalTo()(self.view)
+//            make?.bottom.equalTo()(self.view)
+//            make?.right.equalTo()(self.view)
+////            make?.left.equalTo()(self.view)
+//            make?.left.equalTo()(self.view)
+//        }
         return chartView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+
+//        topView.snp.makeConstraints { (make) -> Void in
+//            make.width.height.equalTo(50)
+//            make.center.equalTo(self.view)
+//        }
     }
     
     func getQueryWithLayersCount(_ layersCount: Int, _ topLayers: Int) -> Void {
