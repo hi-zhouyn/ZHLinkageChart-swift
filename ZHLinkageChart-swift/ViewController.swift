@@ -11,39 +11,38 @@ import SnapKit
 
 class ViewController: UIViewController,TopSelectViewDelegate,ZHLinkageChartViewDelegate {
     
-    lazy var topView: TopSelectView = {
-        
-        let topView = TopSelectView.init(frame: CGRect.init(x: 0.0, y: 0.0, width: KSCREEN_WIDTH, height: 50.0))
-        topView.zh_delegate = self
-        self.view.addSubview(topView)
-        return topView
-    }()
-    
-    lazy var chartView: ZHLinkageChartView = {
-        let chartView = ZHLinkageChartView.init(frame: CGRect(x: 0, y: self.topView.frame.maxY + 10, width: KSCREEN_WIDTH, height: self.view.frame.height - 60))
-        chartView.zh_delegate = self
-        self.view.addSubview(chartView)
-//        chartView.mas_makeConstraints { (make:MASConstraintMaker?) in
-//            make?.top.equalTo()(self.view)
-//            make?.bottom.equalTo()(self.view)
-//            make?.right.equalTo()(self.view)
-////            make?.left.equalTo()(self.view)
-//            make?.left.equalTo()(self.view)
-//        }
-        return chartView
-    }()
+    var topView = TopSelectView()
+    var chartView = ZHLinkageChartView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-
-//        topView.snp.makeConstraints { (make) -> Void in
-//            make.width.height.equalTo(50)
-//            make.center.equalTo(self.view)
-//        }
+        self.updateUI()
+        self.getQueryWithLayersCount(40, 35)
     }
     
+    //加载视图
+    func updateUI() {
+        topView.zh_delegate = self
+        self.view.addSubview(topView)
+        topView.snp.makeConstraints { (make) -> Void in
+            make.top.left.right.equalTo(self.view)
+            make.height.equalTo(KTopSelectViewHeight)
+        }
+        chartView.zh_delegate = self
+        self.view.addSubview(chartView)
+        chartView.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(topView.snp_bottom).offset(10)
+            make.left.right.bottom.equalTo(self.view)
+        }
+    }
+    
+    /** 处理数据并进行传值 */
     func getQueryWithLayersCount(_ layersCount: Int, _ topLayers: Int) -> Void {
+//        var dataArr = Array<Any>()
+//        let strPath = Bundle.main.path(forResource: "layer", ofType: "geojson")
+//        let layerJson: Any = String.init(contentsOfFile: strPath!, encoding: String.Encoding.utf8)
+        
         
         
         
