@@ -24,11 +24,12 @@ protocol ZHLinkageChartViewDelegate: NSObjectProtocol {
 class ZHLinkageChartView: UIView {
     
     weak var zh_delegate : ZHLinkageChartViewDelegate?
-    var dataArr = [[Any]]() {
+    var dataArr = Array<Any>() {
         didSet {
             let allWidth = KSCREEN_WIDTH - KITEMWIDTH - KSPACE - KLINESPACE * 2
             let itemWith = (KITEMWIDTH * CGFloat(dataArr.count)) + KSPACE
             refreshCount = Int(ceilf(Float(allWidth / itemWith)));
+            
         }
     }
     var allKeysArr = [Any]()
@@ -113,6 +114,13 @@ class ZHLinkageChartView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        leftCollectionView.reloadData()
+        headCollectionView.reloadData()
+        bgCollectionView.reloadData()
+        print(self)
+    }
+    
     @objc func speedSelectIndexPath(indexpath: IndexPath) -> Void {
         //此处用section进行下标判断选择
         self.headCollectionView.selectItem(at: IndexPath.init(row: 0, section: indexpath.section), animated: true, scrollPosition: UICollectionView.ScrollPosition.left)
@@ -160,12 +168,15 @@ extension ZHLinkageChartView: UICollectionViewDelegate,UICollectionViewDataSourc
     /** 循环取出赋值偏移量 */
     func updateCollectionViewOffictYWithView(scrollView: UIScrollView) -> Void {
         let indexPath = self.bgCollectionView.indexPathForItem(at: self.bgCollectionView.contentOffset)
+        if indexPath == nil {
+            return
+        }
         var min = indexPath!.section - self.refreshCount
         var max = indexPath!.section + self.refreshCount
         max = max > self.dataArr.count ? self.dataArr.count : max
         min = min > 0 ? min : 0
         for i in min..<max {
-            for j in 0..<self.dataArr[i].count {
+            for j in 0..<(self.dataArr[i] as AnyObject).count {
                 let cell = self.bgCollectionView.cellForItem(at: IndexPath.init(row: j, section: i)) as? ZHBgCollectionViewCell
                 if cell == nil {
                     continue
@@ -180,12 +191,15 @@ extension ZHLinkageChartView: UICollectionViewDelegate,UICollectionViewDataSourc
     
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
+        if collectionView == leftCollectionView {
+            return itemModel?.layersCount ?? 0
+        }
         return self.allKeysArr.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.bgCollectionView {
-            return (((self.dataArr[section])) as AnyObject).count
+            return (self.dataArr[section] as AnyObject).count
         }
         return 1
     }
@@ -200,7 +214,7 @@ extension ZHLinkageChartView: UICollectionViewDelegate,UICollectionViewDataSourc
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NSStringFromClass(ZHBgCollectionViewCell.self), for: indexPath) as! ZHBgCollectionViewCell
             cell.tag = indexPath.row
             cell.indexPath = indexPath
-            cell.itemArr = [self.dataArr[indexPath.section][indexPath.row]]
+            cell.itemArr = (self.dataArr[indexPath.section] as! Array)[indexPath.row]
             cell.zh_itemDelegate = self
             return cell
         } else {
@@ -242,7 +256,7 @@ extension ZHLinkageChartView: UICollectionViewDelegate,UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == self.headCollectionView {
-            return CGSize(width: CGFloat(Int((KITEMWIDTH * 10)) * self.dataArr[indexPath.section].count - 10),
+            return CGSize(width: CGFloat(Int((KITEMWIDTH * 10)) * (self.dataArr[indexPath.section] as AnyObject).count - 10),
                           height: collectionView.frame.height)
         } else if collectionView == self.bgCollectionView {
             return CGSize(width: KITEMWIDTH, height: collectionView.frame.height)

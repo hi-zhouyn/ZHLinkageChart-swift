@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import HandyJSON
 
 class ViewController: UIViewController,TopSelectViewDelegate,ZHLinkageChartViewDelegate {
     
@@ -39,13 +40,32 @@ class ViewController: UIViewController,TopSelectViewDelegate,ZHLinkageChartViewD
     
     /** 处理数据并进行传值 */
     func getQueryWithLayersCount(_ layersCount: Int, _ topLayers: Int) -> Void {
-//        var dataArr = Array<Any>()
-//        let strPath = Bundle.main.path(forResource: "layer", ofType: "geojson")
-//        let layerJson: Any = String.init(contentsOfFile: strPath!, encoding: String.Encoding.utf8)
-        
-        
-        
-        
+        let strPath = Bundle.main.path(forResource: "layer", ofType: "geojson")
+        if let path = strPath {
+            
+            do {
+                let layerJson = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
+                
+                let layerModel = ZHItemModel()
+                layerModel.layersCount = layersCount
+                layerModel.topLayers = topLayers
+                
+                //处理数据
+                let jsonArr = [ZHItemModel].deserialize(from: layerJson) ?? Array<ZHItemModel>()
+                let sortedJsonArr = DataUtil.getSortedWithJsonArr(jsonArr as [Any])
+                let allUnitKeys = DataUtil.getAllUnitKeysArr(withJsonArr: sortedJsonArr as [Any])
+                let dataArr = DataUtil.getAllDataArr(withJsonArr: sortedJsonArr as [Any], allUnitKeys: allUnitKeys, layersCount: layersCount, topLayers: topLayers)
+                
+                //传值
+                topView.allKeysArr = allUnitKeys
+                chartView.itemModel = layerModel
+                chartView.allKeysArr = allUnitKeys
+                chartView.dataArr = dataArr
+                
+            } catch {
+                
+            }
+        }
     }
 
     func selectAction(indexPath: IndexPath) {
@@ -55,5 +75,9 @@ class ViewController: UIViewController,TopSelectViewDelegate,ZHLinkageChartViewD
     func linkageChartViewDidSelect(chartView: ZHLinkageChartView, type: ZHLinkageChartViewSelectType, indexPath: IndexPath, index: Int) {
         print("type:\(type),section:\(indexPath.section),row:\(indexPath.row),index:\(index)")
     }
+    
+    
+    
+    
 }
 

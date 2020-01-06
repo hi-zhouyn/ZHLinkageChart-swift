@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50042DE323C2D2B40081ECDF /* layer.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 50042DE223C2D2B40081ECDF /* layer.geojson */; };
+		50042DE623C313440081ECDF /* DataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 50042DE523C313440081ECDF /* DataUtil.m */; };
 		50084DF623B343010006DDC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50084DF523B343010006DDC4 /* AppDelegate.swift */; };
 		50084DF823B343010006DDC4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50084DF723B343010006DDC4 /* ViewController.swift */; };
 		50084DFB23B343010006DDC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50084DF923B343010006DDC4 /* Main.storyboard */; };
@@ -41,6 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50042DE223C2D2B40081ECDF /* layer.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = layer.geojson; sourceTree = "<group>"; };
+		50042DE423C313440081ECDF /* DataUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataUtil.h; sourceTree = "<group>"; };
+		50042DE523C313440081ECDF /* DataUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataUtil.m; sourceTree = "<group>"; };
 		50084DF223B343010006DDC4 /* ZHLinkageChart-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ZHLinkageChart-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50084DF523B343010006DDC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50084DF723B343010006DDC4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -121,7 +126,10 @@
 				50084DF523B343010006DDC4 /* AppDelegate.swift */,
 				50084DF723B343010006DDC4 /* ViewController.swift */,
 				50084E2423B447F40006DDC4 /* TopSelectView.swift */,
+				50042DE423C313440081ECDF /* DataUtil.h */,
+				50042DE523C313440081ECDF /* DataUtil.m */,
 				50BE828623BDDC4C008DB268 /* ZHObjcBridge.h */,
+				50042DE223C2D2B40081ECDF /* layer.geojson */,
 				50084DF923B343010006DDC4 /* Main.storyboard */,
 				50084DFC23B343030006DDC4 /* Assets.xcassets */,
 				50084DFE23B343030006DDC4 /* LaunchScreen.storyboard */,
@@ -285,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50084E0023B343030006DDC4 /* LaunchScreen.storyboard in Resources */,
+				50042DE323C2D2B40081ECDF /* layer.geojson in Resources */,
 				50084DFD23B343030006DDC4 /* Assets.xcassets in Resources */,
 				50084DFB23B343010006DDC4 /* Main.storyboard in Resources */,
 			);
@@ -375,6 +384,7 @@
 				50084DF823B343010006DDC4 /* ViewController.swift in Sources */,
 				50084E2B23B458B20006DDC4 /* ZHItemCollectionViewCell.swift in Sources */,
 				50084DF623B343010006DDC4 /* AppDelegate.swift in Sources */,
+				50042DE623C313440081ECDF /* DataUtil.m in Sources */,
 				50084E2F23B458CE0006DDC4 /* ZHItemModel.swift in Sources */,
 				50084E2923B458A20006DDC4 /* ZHBgCollectionViewCell.swift in Sources */,
 			);
@@ -556,7 +566,10 @@
 				DEVELOPMENT_TEAM = 8H6HKVCBR9;
 				INFOPLIST_FILE = "ZHLinkageChart-swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zhou.ZHLinkageChart-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ZHLinkageChart-swift/ZHObjcBridge.h";
@@ -574,7 +587,10 @@
 				DEVELOPMENT_TEAM = 8H6HKVCBR9;
 				INFOPLIST_FILE = "ZHLinkageChart-swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zhou.ZHLinkageChart-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ZHLinkageChart-swift/ZHObjcBridge.h";
@@ -591,7 +607,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8H6HKVCBR9;
 				INFOPLIST_FILE = "ZHLinkageChart-swiftTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zhou.ZHLinkageChart-swiftTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -608,7 +628,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8H6HKVCBR9;
 				INFOPLIST_FILE = "ZHLinkageChart-swiftTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zhou.ZHLinkageChart-swiftTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -624,7 +648,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8H6HKVCBR9;
 				INFOPLIST_FILE = "ZHLinkageChart-swiftUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zhou.ZHLinkageChart-swiftUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -640,7 +668,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8H6HKVCBR9;
 				INFOPLIST_FILE = "ZHLinkageChart-swiftUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zhou.ZHLinkageChart-swiftUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

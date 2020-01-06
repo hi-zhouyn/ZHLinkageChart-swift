@@ -9,7 +9,7 @@
 import UIKit
 import HandyJSON
 
-class ZHItemModel: NSObject,HandyJSON {
+@objcMembers class ZHItemModel: NSObject,HandyJSON {
     var layersCount: Int?//总楼层
     var topLayers: Int?//最高楼层
     var houseName: String?//房屋名称（部位）：3-308

@@ -48,7 +48,7 @@ class ZHBgCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        collectionView.reloadData()
     }
     
     required init?(coder aDecoder: NSCoder) {

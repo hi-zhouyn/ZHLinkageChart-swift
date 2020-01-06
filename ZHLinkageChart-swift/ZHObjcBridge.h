@@ -12,6 +12,7 @@
 //#import "LinqToObjectiveC.h"
 //#import "Masonry.h"
 //@import Masonry;
+#import "DataUtil.h"
 @import LinqToObjectiveC;
 
 #endif /* ZHObjcBridge_h */
