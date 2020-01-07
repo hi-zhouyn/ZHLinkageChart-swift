@@ -24,12 +24,17 @@ class ViewController: UIViewController,TopSelectViewDelegate,ZHLinkageChartViewD
     
     //加载视图
     func updateUI() {
+        self.navigationItem.title = "ZHLinkageChart-swift"
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.view.backgroundColor = UIColor.groupTableViewBackground
+        
         topView.zh_delegate = self
         self.view.addSubview(topView)
         topView.snp.makeConstraints { (make) -> Void in
             make.top.left.right.equalTo(self.view)
             make.height.equalTo(KTopSelectViewHeight)
         }
+        
         chartView.zh_delegate = self
         self.view.addSubview(chartView)
         chartView.snp.makeConstraints { (make) -> Void in

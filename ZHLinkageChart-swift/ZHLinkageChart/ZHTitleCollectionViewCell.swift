@@ -12,8 +12,8 @@ class ZHTitleCollectionViewCell: UICollectionViewCell {
     
     var showBorder = false {
         didSet {
-            if self.showBorder && self.contentView.layer.cornerRadius == 0.0 {
-                titleLabel.backgroundColor = UIColor.white
+            if showBorder && contentView.layer.cornerRadius == 0.0 {
+                contentView.backgroundColor = UIColor.groupTableViewBackground
                 contentView.layer.masksToBounds = true
                 contentView.layer.cornerRadius = 2
                 contentView.layer.borderColor = UIColor.lightGray.cgColor

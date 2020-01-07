@@ -18,13 +18,18 @@ protocol TopSelectViewDelegate : NSObjectProtocol {
 class TopSelectView: UIView,UICollectionViewDelegate,UICollectionViewDataSource {
 
     weak var zh_delegate : TopSelectViewDelegate?
-    var allKeysArr = Array<Any>()
+    var allKeysArr = Array<Any>() {
+        didSet {
+            headCollectionView.reloadData()
+        }
+    }
     
     lazy var headCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumLineSpacing = 0
         flowLayout.minimumInteritemSpacing = 0
-        flowLayout.scrollDirection = UICollectionView.ScrollDirection.vertical
+        flowLayout.scrollDirection = UICollectionView.ScrollDirection.horizontal
+        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         flowLayout.itemSize = CGSize(width: 50, height: 50)
         
         let headCollectionView = UICollectionView.init(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: 50), collectionViewLayout: flowLayout)
@@ -33,12 +38,17 @@ class TopSelectView: UIView,UICollectionViewDelegate,UICollectionViewDataSource 
         headCollectionView.dataSource = self
         headCollectionView.showsHorizontalScrollIndicator = false
         headCollectionView.register(ZHTitleCollectionViewCell.self, forCellWithReuseIdentifier:NSStringFromClass(ZHTitleCollectionViewCell.self))
+        self.addSubview(headCollectionView)
         return headCollectionView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        headCollectionView.reloadData()
+        
+    }
+    
+    override func layoutSubviews() {
+        headCollectionView.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: 50)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -46,23 +56,23 @@ class TopSelectView: UIView,UICollectionViewDelegate,UICollectionViewDataSource 
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return allKeysArr.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return allKeysArr.count
+        return 1
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NSStringFromClass(ZHTitleCollectionViewCell.self), for: indexPath)
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NSStringFromClass(ZHTitleCollectionViewCell.self), for: indexPath) as! ZHTitleCollectionViewCell
+        cell.titleLabel.text = "\(allKeysArr[indexPath.section])单元"
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if self.zh_delegate != nil && (self.zh_delegate?.responds(to: Selector.init(("selectAction:"))) != false) {
-            self.zh_delegate?.selectAction(indexPath: indexPath)
+        if zh_delegate != nil {
+            zh_delegate?.selectAction(indexPath: indexPath)
         }
     }
     

@@ -16,7 +16,7 @@ protocol ZHBgCollectionViewCellDelegate : NSObjectProtocol {
 }
 
 /** 闭包 */
-typealias ItemSelectBlock = (_ indexPath: IndexPath,_ index: Int) -> Void
+typealias ItemSelectBlock = (_ indexPath: IndexPath, _ index: Int) -> Void
 
 class ZHBgCollectionViewCell: UICollectionViewCell {
     
@@ -54,38 +54,36 @@ class ZHBgCollectionViewCell: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
+   
 }
 
 extension ZHBgCollectionViewCell : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if zh_itemDelegate != nil && (zh_itemDelegate?.responds(to: Selector.init(("itemCollectionViewDidScroll:"))) != false) {
+        if zh_itemDelegate != nil {
             zh_itemDelegate?.itemCollectionViewDidScroll(scrollView: scrollView)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.itemArr.count
+        return itemArr.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NSStringFromClass(ZHItemCollectionViewCell.self), for: indexPath) as! ZHItemCollectionViewCell
-        if self.itemArr.count > indexPath.row {
+        if itemArr.count > indexPath.row {
             let infoModel = itemArr[indexPath.row] as! ZHItemModel
             cell.updateDataWithTitle(title: infoModel.houseName ?? "", info: infoModel.layoutName ?? "", tag: 1)
         }
-        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if (selectBlock != nil) {
-            selectBlock!(self.indexPath,indexPath.row)
+            selectBlock!(indexPath,indexPath.row)
         }
-        if zh_itemDelegate != nil && (zh_itemDelegate?.responds(to: Selector.init(("itemDidSelectIndexPath"))))! {
-            zh_itemDelegate?.itemDidSelectIndexPath(indexPath: self.indexPath, index: indexPath.row)
+        if zh_itemDelegate != nil {
+            zh_itemDelegate?.itemDidSelectIndexPath(indexPath: indexPath, index: indexPath.row)
         }
     }
     
